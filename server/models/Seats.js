@@ -12,6 +12,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: true
         },
+        KindOfSeat_Id: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         VerticalSeatRow: {
             type: DataTypes.INTEGER,
             allowNull: true
@@ -21,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true
         },	
 		Status: {
-			type: DataTypes.BOOLEAN,
+			type: DataTypes.INTEGER,
 			allowNull: false
 		},
 		Deleted: {

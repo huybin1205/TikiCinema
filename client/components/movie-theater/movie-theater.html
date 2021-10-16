@@ -18,24 +18,22 @@
     <section class="section">
         <div class="card">
             <div class="card-body">
-                <table class="table" id="tableCinema">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th></th>
+                            <th>Tên rạp</th>
+                            <th>Tổng số ghế</th>
+                            <th>Tình trạng</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="cinemar in cinemars">
-                            <td><a ui-sref="movie-theater({cinemaId: cinemar.Id})">{{cinemar.Name}}</a></td>
-                            <td>{{cinemar.Email}}</td>
-                            <td>{{cinemar.Phone}}</td>
-                            <td>{{cinemar.Address}}</td>
+                        <tr ng-repeat="movieTheater in movieTheaters">
+                            <!-- <td><a ui-sref="cinema-detail({cinemaId: cinemar.Id})">{{cinemar.Name}}</a></td> -->
+                            <td><a  ui-sref="seat({movieTheaterId: movieTheater.Id})">{{movieTheater.Name}}</a></td>
+                            <td>{{movieTheater.HorizontalSeats * movieTheater.VerticalSeats}}</td>
                             <td>
-                                <span class="badge bg-success">Active</span>
+                                <span ng-class="{'badge bg-danger': movieTheater.Deleted, 'badge bg-success': !movieTheater.Deleted}">{{movieTheater.Deleted ? 'Ngưng hoạt động' : 'Hoạt động'}}</span>
+                                <!-- <span class="badge {{movieTheater.Deleted ? 'bg-danger' : 'bg-success'}}">{{movieTheater.Deleted ? 'Ngưng hoạt động' : 'Hoạt động'}}</span> -->
                             </td>
                         </tr>
                     </tbody>

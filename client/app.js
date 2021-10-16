@@ -12,15 +12,25 @@
 
         // app routes
         $stateProvider
-            .state('cinema-detail',{
-                url: '/cinema/:cinemaId',
+            .state('seat',{
+                url: '/seat/:movieTheaterId',
+                templateUrl: 'components/seat/seat.html',
+                controller: 'seatCtrl'
+            })
+            .state('film',{
+                url: '/film/:movieTheaterId',
+                templateUrl: 'components/film/film.html',
+                controller: 'filmCtrl'
+            })
+            .state('movie-theater',{
+                url: '/movie-theater/:cinemaId',
+                templateUrl: 'components/movie-theater/movie-theater.html',
+                controller: 'movieTheaterCtrl'
+            })
+            .state('cinema',{
+                url: '/cinema',
                 templateUrl: 'components/cinema/cinema.html',
                 controller: 'cinemaCtrl'
-            })
-            .state('home',{
-                url: '/home',
-                templateUrl: 'components/home/home.html',
-                controller: 'homeCtrl'
             })
             .state('login', {
                 url: '/login',

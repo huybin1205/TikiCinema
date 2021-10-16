@@ -5,16 +5,20 @@
         .module('TikiCinemaSystem')
         .controller('cinemaCtrl', cinemaCtrl);
 
-    cinemaCtrl.$inject = ['$scope','$stateParams','$rootScope', '$localStorage', 'authService', 'notifyService', '$state', 'blockUI'];
-    function cinemaCtrl($scope, $stateParams, $rootScope, $localStorage, authService, notifyService, $state, blockUI) {
-        $scope.cinemaId = $stateParams.cinemaId
-
+    cinemaCtrl.$inject = ['$scope', '$rootScope', '$localStorage', 'cinemaService', 'notifyService', '$state', 'blockUI'];
+    function cinemaCtrl($scope, $rootScope, $localStorage, cinemaService, notifyService, $state, blockUI) {
         initController();
-
+        $scope.cinemars = [];
         ////////////////
 
         function initController() {
-           console.log($scope.cinemaId);
+            getListCinemas();
+        }
+
+        function getListCinemas() {
+            cinemaService.getListCinemas(function(result) {
+                $scope.cinemars = result.data;
+            });
         }
     }
 })();

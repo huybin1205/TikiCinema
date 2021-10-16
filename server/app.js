@@ -12,7 +12,10 @@ var passport = require('passport');
 
 // setup the router
 var auth = require('./routes/auth.route');
-var home = require('./routes/home.route');
+var cinema = require('./routes/cinema.route');
+var movieTheater = require('./routes/movieTheater.route');
+var seat = require('./routes/seat.route');
+var kindOfSeat = require('./routes/kindOfSeat.route');
 
 var app = express();
 
@@ -36,7 +39,10 @@ app.use(cors());
 app.use(passport.initialize());
 //routes
 app.use('/api/auth', auth);
-app.use('/api/home', home);
+app.use('/api/cinema', cinema);
+app.use('/api/movie-theater', movieTheater);
+app.use('/api/seat', seat);
+app.use('/api/kind-of-seat', kindOfSeat);
 // app.use('/api/shifts', shifts);
 
 // catch 404 and forward to error handler

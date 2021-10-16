@@ -12,6 +12,10 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: true
         },
+        Name: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         HorizontalSeats: {
             type: DataTypes.INTEGER,
             allowNull: true

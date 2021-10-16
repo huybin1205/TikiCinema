@@ -1,0 +1,105 @@
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Danh sách ghế</h3>
+                <p class="text-subtitle text-muted"></p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">DataTable</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-6 order-md-2 order-first">
+            <section class="section">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th ng-repeat="kindOfSeat in kindOfSeats">{{kindOfSeat.Name}}</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-6 col-md-6 order-md-2 order-first">
+            <section class="section">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="bg-danger" style="color:white">Đã đặt</th>
+                                    <th class="bg-light">Còn trống</th>
+                                    <th class="bg-info" style="color:white">Đang chọn</th>
+                                    <th class="bg-dark" style="color:white">Ghế đang sửa chữa</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-12 order-md-2 order-first">
+            <section class="section">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: center;" class="text-white bg-secondary" colspan="20">
+                                        MÀN HÌNH
+                                    </td>
+                                </tr>
+                                <tr rowspan="2">
+                                    <td colspan="20"></td>
+                                </tr>
+                                <tr rowspan="2">
+                                    <td colspan="20"></td>
+                                </tr>
+                                <tr ng-repeat="i in (verticalSeats)">
+                                    <td ng-repeat="j in (horizontalSeats)" title="Hàng ghế {{(i + 10).toString(36).toUpperCase()}}">
+                                        <input 
+                                            type="button"
+                                            ng-class="{
+                                            'btn btn-light': getStatusSeat(i,j) == 0, 
+                                            'btn bg-dark text-white': getStatusSeat(i,j) == -1,
+                                            'btn bg-danger text-white': getStatusSeat(i,j) == 1,
+                                            'btn bg-info text-white': getStatusSeat(i,j) == 2,
+                                            }"
+                                            data-ng-click="addSeat(getSeat(i,j))"
+                                            value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"
+                                        >
+                                        <!-- <input data-ng-click="addSeat(getSeat(i,j))" id="row_{{i}}_{{j}}" class="btn bg-light img-respotive" type="button" ng-if="getStatusSeat(i,j) == 0" title="Trống" value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"> -->
+                                        <!-- <input data-ng-click="addSeat(getSeat(i,j))" id="row_{{i}}_{{j}}" class="btn bg-dark img-respotive" style="color:white" type="button" ng-if="getStatusSeat(i,j) == -1" title="Không được đặt" value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"> -->
+                                        <!-- <input data-ng-click="addSeat(getSeat(i,j))" id="row_{{i}}_{{j}}" class="btn bg-danger img-respotive" style="color:white" type="button" ng-if="getStatusSeat(i,j) == 1" title="Đã đặt" value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"> -->
+                                        <!-- <input data-ng-click="addSeat(getSeat(i,j))" id="row_{{i}}_{{j}}" class="btn bg-info img-respotive" style="color:white" type="button" ng-if="getStatusSeat(i,j) == 2" title="Đã đặt" value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"> -->
+                                    </td>
+                                </tr>
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
+<script>
+    function initDataTable() {
+        // Simple Datatable
+        let tableCinema = document.querySelector('#tableCinema');
+        let dataTable = new simpleDatatables.DataTable(tableCinema);
+    }
+</script>
