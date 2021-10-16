@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ExaminationSystem')
+        .module('TikiCinemaSystem')
         .controller('loginCtrl', loginCtrl);
 
     loginCtrl.$inject = ['$scope','$rootScope', '$localStorage', 'authService', 'notifyService', '$state', 'blockUI'];

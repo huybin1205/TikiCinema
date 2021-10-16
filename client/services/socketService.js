@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ExaminationSystem')
+        .module('TikiCinemaSystem')
         .factory('socketService', socketService);
 
     socketService.$inject = ['$rootScope', '$localStorage', '$q', 'examService'];

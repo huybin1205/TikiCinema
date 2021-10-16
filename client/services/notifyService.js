@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ExaminationSystem')
+        .module('TikiCinemaSystem')
         .factory('notifyService', notifyService);
 
     notifyService.$inject = ['toastr'];

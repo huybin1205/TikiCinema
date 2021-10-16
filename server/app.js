@@ -11,10 +11,8 @@ var cors = require('cors');
 var passport = require('passport');
 
 // setup the router
-// var question = require('./routes/question.route');
-// var questionSheet = require('./routes/questionSheet.route');
 var auth = require('./routes/auth.route');
-// var shifts = require('./routes/shift.route');
+var home = require('./routes/home.route');
 
 var app = express();
 
@@ -37,10 +35,8 @@ app.use(cors());
 // Initialize passport for use
 app.use(passport.initialize());
 //routes
-// app.use('/ObjectiveTest', express.static('ObjectiveTest'))
-// app.use('/api/questions', question);
-// app.use('/api/questionsheets', questionSheet);
 app.use('/api/auth', auth);
+app.use('/api/home', home);
 // app.use('/api/shifts', shifts);
 
 // catch 404 and forward to error handler

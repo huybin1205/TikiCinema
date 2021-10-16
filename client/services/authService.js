@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ExaminationSystem')
+        .module('TikiCinemaSystem')
         .factory('authService', authService);
 
     authService.$inject = ['$rootScope', '$http', '$state', '$localStorage', 'notifyService', 'jwtHelper'];

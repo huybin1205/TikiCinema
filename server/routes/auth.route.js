@@ -35,7 +35,6 @@ router.post('/login', (req, res, next) => {
     // Receive username and password from view client input
     var username = req.body.username;
     var password = md5(req.body.password);
-    console.log(username, password);
     // Check equal between username and password
     // Case: username equal password
     // Check exist user with username

@@ -1,7 +1,7 @@
 module.exports = {
     secret: '#T!K1noVV!',
-    username: '', // username of mssql
-    password: '', // password of mssql
+    username: 'sa', // username of mssql
+    password: 'huybin1205', // password of mssql
     host: 'localhost',
     database: 'TikiCenima', // database of mssql
     dialect: 'mssql',

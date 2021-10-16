@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('ExaminationSystem', ['ui.router', 'ngMessages', 'ngStorage', 'ngAnimate', 'ngSanitize', 'blockUI', 'ui.bootstrap', 'toastr', 'angular-jwt', 'hl.sticky', 'angular-loading-bar', 'timer', 'ngAudio'])
+        .module('TikiCinemaSystem', ['ui.router', 'ngMessages', 'ngStorage', 'ngAnimate', 'ngSanitize', 'blockUI', 'ui.bootstrap', 'toastr', 'angular-jwt', 'hl.sticky', 'angular-loading-bar', 'timer', 'ngAudio'])
         .config(config)
         .run(run);
 
@@ -12,26 +12,11 @@
 
         // app routes
         $stateProvider
-            // .state('info', {
-            //     url: '/',
-            //     templateUrl: 'components/info/info.html',
-            //     controller: 'infoCtrl'
-            // })
-            // .state('exam', {
-            //     url: '/exam',
-            //     templateUrl: 'components/exam/exam.html',
-            //     controller: 'examCtrl'
-            // })
-            // .state('result', {
-            //     url: '/result',
-            //     templateUrl: 'components/result/result.html',
-            //     controller: 'resultCtrl'
-            // })
-            // .state('review', {
-            //     url: '/review',
-            //     templateUrl: 'components/review/review.html',
-            //     controller: 'reviewCtrl'
-            // })
+            .state('cinema-detail',{
+                url: '/cinema/:cinemaId',
+                templateUrl: 'components/cinema/cinema.html',
+                controller: 'cinemaCtrl'
+            })
             .state('home',{
                 url: '/home',
                 templateUrl: 'components/home/home.html',
@@ -71,5 +56,4 @@
             }
         });
     }
-
 })();
