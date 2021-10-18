@@ -5,21 +5,22 @@
         .module('TikiCinemaSystem')
         .controller('filmCtrl', filmCtrl);
 
-    filmCtrl.$inject = ['$scope', '$rootScope', '$localStorage', 'cinemaService', 'notifyService', '$state', 'blockUI'];
-    function filmCtrl($scope, $rootScope, $localStorage, cinemaService, notifyService, $state, blockUI) {
+    filmCtrl.$inject = ['$scope', '$rootScope', '$stateParams', '$localStorage', 'filmService', 'notifyService', '$state', 'blockUI'];
+    function filmCtrl($scope, $rootScope, $stateParams, $localStorage, filmService, notifyService, $state, blockUI) {
+        $scope.cinemaId = $stateParams.cinemaId;
         initController();
-        $scope.cinemars = [];
+        $scope.films = [];
         ////////////////
 
         function initController() {
-            console.log(1);
-            // getListCinemas();
+            console.log($scope.cinemaId);
+            getListFilms();
         }
 
-        // function getListCinemas() {
-        //     cinemaService.getListCinemas(function(result) {
-        //         $scope.cinemars = result.data;
-        //     });
-        // }
+        function getListFilms() {
+            filmService.getListFilms(function (result) {
+                $scope.films = result.data;
+            });
+        }
     }
 })();

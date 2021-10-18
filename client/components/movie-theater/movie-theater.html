@@ -29,7 +29,7 @@
                     <tbody>
                         <tr ng-repeat="movieTheater in movieTheaters">
                             <!-- <td><a ui-sref="cinema-detail({cinemaId: cinemar.Id})">{{cinemar.Name}}</a></td> -->
-                            <td><a  ui-sref="seat({movieTheaterId: movieTheater.Id})">{{movieTheater.Name}}</a></td>
+                            <td><a  ui-sref="seat({cinemaId, filmId,movieTheaterId: movieTheater.Id})">{{movieTheater.Name}}</a></td>
                             <td>{{movieTheater.HorizontalSeats * movieTheater.VerticalSeats}}</td>
                             <td>
                                 <span ng-class="{'badge bg-danger': movieTheater.Deleted, 'badge bg-success': !movieTheater.Deleted}">{{movieTheater.Deleted ? 'Ngưng hoạt động' : 'Hoạt động'}}</span>

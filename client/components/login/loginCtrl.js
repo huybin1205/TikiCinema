@@ -16,7 +16,7 @@
         function initController() {
             // check login status
             if ($localStorage.currentUser) {
-                $state.go('home');
+                $state.go('cinema');
             } else {
                 // reset login status
                 authService.logout();
@@ -27,6 +27,7 @@
                 console.log(result);
                 if (result.success === true) {
                     $rootScope.username = $scope.username;
+                    $state.go('cinema');
                 }
             });
         };

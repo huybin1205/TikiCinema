@@ -3,24 +3,25 @@
 
     angular
         .module('TikiCinemaSystem')
-        .factory('cinemaService', cinemaService);
+        .factory('filmService', filmService);
 
-    cinemaService.$inject = ['$rootScope', '$http', '$state', '$localStorage', 'notifyService', 'jwtHelper'];
-    function cinemaService($rootScope, $http, $state, $localStorage, notifyService, jwtHelper) {
+    filmService.$inject = ['$rootScope', '$http', '$state', '$localStorage', 'notifyService', 'jwtHelper'];
+    function filmService($rootScope, $http, $state, $localStorage, notifyService, jwtHelper) {
 
         var service = {
-            getListCinemas: getListCinemasFn
+            getListFilms: getListFilmsFn
         };
 
         return service;
 
         ////////////////
-        function getListCinemasFn(callback) {
-            $http.get('/api/cinema/getListCinemas')
+        function getListFilmsFn(callback) {
+            $http.get('/api/film/getListFilms')
                 .then(function (response) {
                     callback({ success: true, data: response.data});
                 }).catch((err) => {
                     callback({ success: false, message: err.data.message });
+                    swal(err.data.message, "", "error");
                     notifyService.error(err.data.message, 'Thông báo');
                 });
         }

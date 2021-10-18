@@ -46,16 +46,16 @@ router.post('/login', (req, res, next) => {
             } else {
                 // Case: Exist user
                 authService.checkUserHasLogin(data[0].Id)
-                    .then((data) => {
-                        if (!data[0].Status) {
+                    .then((result) => {
+                        if (!result[0].Status) {
                             res.status(200).json({success: true, message: 'Tài khoản này đang được đăng nhập'});
                         } else {
                             // Return token to client
-                            // data: username
-                            const token = jwt.sign({ data: data[0].Id }, config.secret, {
+                            // result: username
+                            const token = jwt.sign({ result: data[0].Id }, config.secret, {
                                 expiresIn: 86400 // 24h in seconds,
                             });
-                            res.status(200).json({ success: true, token: 'JWT ' + token});
+                            res.status(200).json({ success: true, token: 'JWT ' + token,Id: data[0].Id});
                         }
                 });
             }
@@ -64,21 +64,17 @@ router.post('/login', (req, res, next) => {
         });
 });
 
-// router.post('/logout', requireAuth, (req, res, next) => {
-//     var shiftSubjectId = req.user.ShiftSubjectId;
-//     var questionSheetId = req.user.QuestionSheetId;
-//     var studentId = req.user.StudentId;
-//     //console.log(studentId);
-//     authService.logout(shiftSubjectId, questionSheetId, studentId)
-//         .then(function (response) {
-//             req.logOut();
-//             res.status(200).send(true);
-//             localStorage.removeItem("ngStorage-currentUser");
-//         })
-//         .catch((err) => {
-//             res.status(404).send(false);
-//             return;
-//         });
-// });
+router.post('/logout', (req, res, next) => {
+    var token = req.header('authorization').split(' ')[1];
+    userId = jwt.verify(token, config.secret).result;
+    authService.logout(userId)
+        .then(function (response) {
+            res.status(200).json({status: true, message: 'Đẵng xuất thành công'});
+        })
+        .catch((err) => {
+            res.status(404).json({status:false,message:'Có lỗi',error: err});
+            return;
+        });
+});
 
 module.exports = router;

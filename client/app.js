@@ -13,22 +13,27 @@
         // app routes
         $stateProvider
             .state('seat',{
-                url: '/seat/:movieTheaterId',
+                url: '/seat/:cinemaId/:filmId/:movieTheaterId',
                 templateUrl: 'components/seat/seat.html',
                 controller: 'seatCtrl'
             })
             .state('film',{
-                url: '/film/:movieTheaterId',
+                url: '/film/:cinemaId',
                 templateUrl: 'components/film/film.html',
                 controller: 'filmCtrl'
             })
             .state('movie-theater',{
-                url: '/movie-theater/:cinemaId',
+                url: '/movie-theater/:cinemaId/:filmId',
                 templateUrl: 'components/movie-theater/movie-theater.html',
                 controller: 'movieTheaterCtrl'
             })
             .state('cinema',{
                 url: '/cinema',
+                templateUrl: 'components/cinema/cinema.html',
+                controller: 'cinemaCtrl'
+            })
+            .state('/',{
+                url: '/',
                 templateUrl: 'components/cinema/cinema.html',
                 controller: 'cinemaCtrl'
             })
@@ -50,7 +55,7 @@
         });
     }
 
-    function run($rootScope, $http, $location, $localStorage) {
+    function run($rootScope, $http, $location, $localStorage,authService,$state) {
         // keep user logged in after page refresh
         if ($localStorage.currentUser) {
             // $http.defaults.headers.common.Authorization = 'JWT ' + $localStorage.currentUser.token;
@@ -65,5 +70,13 @@
                 $location.path('/login');
             }
         });
+
+        $rootScope.logout = function(){
+            console.log(1);
+            authService.logout(function(result){
+                $state.go('login');
+                swal("Đăng xuất thành công", "", "info");
+            });
+        }
     }
 })();

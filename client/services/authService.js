@@ -10,9 +10,7 @@
 
         var service = {
             login: loginFn,
-            // loggedIn: loggedInFn,
             logout: logoutFn,
-            // signOut: signOutFn,
             regClient: regClientFn
         };
 
@@ -33,77 +31,50 @@
                             $http.defaults.headers.common.Authorization = response.data.token;
 
                             // execute callback with true to indicate successful login
-                            notifyService.success('Đăng nhập thành công');
+                            swal("Đăng nhập thành công!", "", "success");
                             callback(
                                 {
                                     success: true,
                                 }
                             );
                         } else {
-                            notifyService.error(response.data.message, 'Thông báo');
+                            swal(response.data.message, "", "error");
+                            // notifyService.error(response.data.message, 'Thông báo');
                             // execute callback with false to indicate failed login
                             callback({ success: false });
                         }
                     } else {
+                        swal(response.data.message, "", "error");
                         notifyService.error('', response.data.message);
                         // execute callback with false to indicate failed login
                         callback({ success: false });
                     }
                 }).catch((err) => {
+                    swal(err.data.message, "", "error");
                     notifyService.error(err.data.message, 'Thông báo');
                 });
         }
-        // function loggedInFn(callback) {
-        //     // Check existing token or token is expired
-        //     if (jwtHelper.isTokenExpired($localStorage.currentUser.token) || !$localStorage.currentUser || $localStorage.currentUser == null) {
-        //         /* Case: Token isn't exist
-        //         => Logout */
-        //         logoutFn();
-        //     } else {
-        //         // Case: Token is exist
-        //         $http.get('/api/auth/loggedin')
-        //             .then(function (response) {
-        //                 if (response.status == 500) {
-        //                     logoutFn();
-        //                 } else {
-        //                     if (response.data) {
-        //                         // Result: Infor shift and student
-        //                         $rootScope.info = response.data;
-        //                         callback(true);
-        //                     } else {
-        //                         callback(false);
-        //                     }
-        //                 }
-        //             }).catch((err) => {
-        //                 if (err.status == 500) {
-        //                     notifyService.error('', 'Hệ thống đang gặp trục trặc');
-        //                     logoutFn();
-        //                 }
-        //             });
-        //     }
-        // }
         function logoutFn() {
-            // remove user from local storage and clear http auth header
-            $http.defaults.headers.common.Authorization = '';
-            delete $localStorage.currentUser;
-            // Redirect to login
+            $http.post('/api/auth/logout')
+                .then(function (response) {
+                    // remove user from local storage and clear http auth header
+                    $http.defaults.headers.common.Authorization = '';
+                    delete $localStorage.currentUser;
+                    // Redirect to login
+                    $state.go('login');
+                    swal("Đăng xuất thành công", "", "success");
+                    callback({ success: true, message: response.data.message });
+                }).catch((err) => {
+                    console.log(err);
+                    swal(err.data.message, "", "error");
+                    notifyService.error(err.data.message, 'Thông báo');
+                });
             $state.go('login');
         }
-        // function signOutFn(shiftSubjectId, questionSheetId, studentId, callback) {
-        //     return $http.post('/api/auth/logout', {
-        //         shiftSubjectId: shiftSubjectId,
-        //         questionSheetId: questionSheetId,
-        //         studentId: studentId
-        //     }).then(function (response) {
-        //         if (response.data == true) {
-        //             callback(true);
-        //             notifyService.success('Đăng xuất thành công', 'Thông báo');
-        //         } else {
-        //             callback(false);
-        //         }
-        //     }).catch(function (error) {
-        //         console.error(error);
-        //     });
+        // function logoutFn() {
+        //     $http.defaults.headers.common.Authorization = '';
+        //     delete $localStorage.currentUser;
+        //     $state.go('login');
         // }
         function regClientFn(code) {
             return $localStorage.regClient = { code: code }

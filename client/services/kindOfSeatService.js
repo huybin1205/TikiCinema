@@ -21,6 +21,7 @@
                     callback({ success: true, data: response.data});
                 }).catch((err) => {
                     callback({ success: false, message: err.data.message });
+                    swal(err.data.message, "", "error");
                     notifyService.error(err.data.message, 'Thông báo');
                 });
         }

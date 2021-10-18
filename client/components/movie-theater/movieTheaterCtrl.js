@@ -8,6 +8,7 @@
     movieTheaterCtrl.$inject = ['$scope','$stateParams', '$rootScope', '$localStorage', 'movieTheaterService', 'notifyService', '$state', 'blockUI'];
     function movieTheaterCtrl($scope, $stateParams,$rootScope, $localStorage, movieTheaterService, notifyService, $state, blockUI) {
         $scope.cinemaId = $stateParams.cinemaId;
+        $scope.filmId = $stateParams.filmId;
         $scope.movieTheaters = [];
         initController();
         ////////////////

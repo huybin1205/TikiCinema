@@ -21,6 +21,15 @@ exports.checkLogin = (username, password) => {
 }
 
 /**
+     * Logout
+     * @param {*int} id 
+     */
+ exports.logout = (id) => {
+    return sequelize.query(`EXEC Logout @id= ${id}`, { type: sequelize.QueryTypes.SELECT })
+}
+
+
+/**
  * authorize route
  */
 exports.requireAuth = () => {

@@ -1,4 +1,4 @@
-// home.route.js
+// movieTheater.route.js
 var express = require('express');
 var router = express.Router();
 var movieTheaterService = require('../services/movieTheater.service');
@@ -16,6 +16,17 @@ router.get('/getListMovieTheatersByCinemaId/:cinemaId', (req, res, next) => {
         res.status(200).json(response);
     }).catch((err) => {
         res.status(500).json({status:false, message: 'Có lỗi xảy ra khi lấy danh sách rạp',errors:err});
+    });;
+});
+/*
+    Get MovieTheater by Id
+*/
+router.get('/getMovieTheaterById/:movieTheaterId', (req, res, next) => {
+    var movieTheaterId = req.params.movieTheaterId;
+    movieTheaterService.getMovieTheaterById(movieTheaterId).then(function(response) {
+        res.status(200).json(response);
+    }).catch((err) => {
+        res.status(500).json({status:false, message: `Có lỗi xảy ra khi rạp số ${movieTheaterId}`,errors:err});
     });;
 });
 

@@ -16,22 +16,20 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" ng-repeat="film in films"> 
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <h4 class="card-title">Card With Header And Footer</h4>
+                        <h4 class="card-title">{{film.Title}}</h4>
                         <p class="card-text">
-                            Gummies bonbon apple pie fruitcake icing biscuit apple pie jelly-o sweet
-                            roll. Toffee
-                            sugar plum sugar plum jelly-o jujubes bonbon dessert carrot cake.
+                            {{film.Description}}
                         </p>
                     </div>
-                    <img class="img-fluid w-100" src="assets/images/samples/banana.jpg" alt="Card image cap">
+                    <img class="img-fluid w-100" src="assets/images/{{film.Poster}}" alt="{{film.Alias}}">
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                    <span>Card Footer</span>
-                    <button class="btn btn-light-primary">Read More</button>
+                    <span>Thể loại: {{film.CategoryName}}</span>
+                    <a ui-sref="movie-theater({cinemaId: cinemaId, filmId: film.Id})" class="btn btn-light-primary">Đặt vé</a >
                 </div>
             </div>
         </div>

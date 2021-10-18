@@ -16,85 +16,91 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-6 col-md-6 order-md-2 order-first">
-            <section class="section">
-                <div class="card">
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th ng-repeat="kindOfSeat in kindOfSeats">{{kindOfSeat.Name}}</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div class="col-6 col-md-6 order-md-2 order-first">
-            <section class="section">
-                <div class="card">
-                    <div class="card-body">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="bg-danger" style="color:white">Đã đặt</th>
-                                    <th class="bg-light">Còn trống</th>
-                                    <th class="bg-info" style="color:white">Đang chọn</th>
-                                    <th class="bg-dark" style="color:white">Ghế đang sửa chữa</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-md-12 order-md-2 order-first">
-            <section class="section">
-                <div class="card">
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <td style="text-align: center;" class="text-white bg-secondary" colspan="20">
-                                        MÀN HÌNH
-                                    </td>
-                                </tr>
-                                <tr rowspan="2">
-                                    <td colspan="20"></td>
-                                </tr>
-                                <tr rowspan="2">
-                                    <td colspan="20"></td>
-                                </tr>
-                                <tr ng-repeat="i in (verticalSeats)">
-                                    <td ng-repeat="j in (horizontalSeats)" title="Hàng ghế {{(i + 10).toString(36).toUpperCase()}}">
-                                        <input 
-                                            type="button"
-                                            ng-class="{
-                                            'btn btn-light': getStatusSeat(i,j) == 0, 
+        <div class="row">
+            <div class="col-12 col-md-12 order-md-2 order-first">
+                <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: center;" class="text-white bg-secondary" colspan="20">
+                                            MÀN HÌNH
+                                        </td>
+                                    </tr>
+                                    <tr rowspan="2">
+                                        <td colspan="20"></td>
+                                    </tr>
+                                    <tr rowspan="2">
+                                        <td colspan="20"></td>
+                                    </tr>
+                                    <tr ng-repeat="i in (verticalSeats)">
+                                        <td ng-repeat="j in (horizontalSeats)"
+                                            title="Hàng ghế {{(i + 10).toString(36).toUpperCase()}}">
+                                            <input type="button" ng-class="{
                                             'btn bg-dark text-white': getStatusSeat(i,j) == -1,
+                                            'btn btn-light': getStatusSeat(i,j) == 0, 
                                             'btn bg-danger text-white': getStatusSeat(i,j) == 1,
                                             'btn bg-info text-white': getStatusSeat(i,j) == 2,
-                                            }"
-                                            data-ng-click="addSeat(getSeat(i,j))"
-                                            value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"
-                                        >
-                                        <!-- <input data-ng-click="addSeat(getSeat(i,j))" id="row_{{i}}_{{j}}" class="btn bg-light img-respotive" type="button" ng-if="getStatusSeat(i,j) == 0" title="Trống" value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"> -->
-                                        <!-- <input data-ng-click="addSeat(getSeat(i,j))" id="row_{{i}}_{{j}}" class="btn bg-dark img-respotive" style="color:white" type="button" ng-if="getStatusSeat(i,j) == -1" title="Không được đặt" value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"> -->
-                                        <!-- <input data-ng-click="addSeat(getSeat(i,j))" id="row_{{i}}_{{j}}" class="btn bg-danger img-respotive" style="color:white" type="button" ng-if="getStatusSeat(i,j) == 1" title="Đã đặt" value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"> -->
-                                        <!-- <input data-ng-click="addSeat(getSeat(i,j))" id="row_{{i}}_{{j}}" class="btn bg-info img-respotive" style="color:white" type="button" ng-if="getStatusSeat(i,j) == 2" title="Đã đặt" value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"> -->
-                                    </td>
-                                </tr>
-                            <tbody>
-                        </table>
+                                            'btn bg-warning text-white': getStatusSeat(i,j) == 3,
+                                            }" data-ng-click="addSeat(getSeat(i,j))" value="{{i}}{{j}}">
+                                            <!-- value="{{(i + 10).toString(36).toUpperCase()}}{{j}}"> -->
+                                        </td>
+                                    </tr>
+                                <tbody>
+                            </table>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="bg-danger" style="color:white">Đã đặt</th>
+                                        <th class="bg-light">Còn trống</th>
+                                        <th class="bg-info" style="color:white">Đang chọn</th>
+                                        <th class="bg-dark" style="color:white">Không chọn</th>
+                                        <th class="bg-warning" style="color:white">Gợi ý</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="col-3 col-md-3 order-md-2">
+            <section class="section">
+                <div class="card">
+                    <div class="card-body">
+                        <input type="number" min="1" value="1" ng-model="quantity" name="quantity" id="inputquantity"
+                            class="form-control" placeholder="Nhập số lượng ghế muốn đặt" required="required">
+                        <button ng-click="quantitySuggestion()" type="button" class="btn btn-primary mt-1">Gợi
+                            ý</button>
+                        <button ng-click="book()" type="button" class="btn btn-primary mt-1">Đặt vé</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-3 col-md-3 order-md-2">
+            <section class="section">
+                <div class="card">
+                    <div class="card-body">
+                        <span class="label label-info">Giãn cách</span>
+                        <input type="number" min="1" value="1" ng-model="manhattan" name="quantity" id="inputquantity"
+                            class="form-control" placeholder="Giãn cách" required="required">
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <section class="section">
+                <div class="card">
+                    <div class="card-body">
+                        <span class="label label-info">TỔNG TIỀN</span>
+                        <h6>{{listChange.length}}</h6>
+                        <h1>{{quantityBooked}}</h1>
                     </div>
                 </div>
             </section>
         </div>
     </div>
-
 </div>
 <script>
     function initDataTable() {

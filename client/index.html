@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="A Tiki Cinema">
-    <meta name="author" content="team7">
-    <link rel="icon" href="assets/images/hutech-favicon.ico">
+    <meta name="description" content="Tiki Cinema">
+    <meta name="author" content="Trần Gia Huy">
+    <link rel="icon" href="assets/images/logo-tiki.ico">
     <title>Tiki Cinema</title> <!-- Bootstrap core CSS -->
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -19,6 +19,7 @@
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="assets/css/app.css">
     <!-- <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon"> -->
 </head>
@@ -30,7 +31,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="index.html"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4d/Logo_Website_Tiki.vn.png" style="width: 100px; height: auto;"></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -44,7 +45,13 @@
                         <li class="sidebar-item active ">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Dashboard</span>
+                                <span>Cinema</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" ng-click="logout()" class='sidebar-link'>
+                                <i class="bi bi-person-badge-fill"></i>
+                                <span>Đăng xuất</span>
                             </a>
                         </li>
                     </ul>
@@ -63,7 +70,7 @@
             </div>
 
             <footer>
-                <div class="footer clearfix mb-0 text-muted">
+                <div class="footer clearfix mb-0 text-muted mt-10">
                     <div class="float-start">
                         <p>2021 &copy; Trần Gia Huy</p>
                     </div>
@@ -106,14 +113,16 @@
     <script type='text/javascript' src="services/cinemaService.js"></script>
     <script type='text/javascript' src="services/seatService.js"></script>
     <script type='text/javascript' src="services/movieTheaterService.js"></script>
-    <script type='text/javascript' src="services/homeService.js"></script>
+    <!-- <script type='text/javascript' src="services/homeService.js"></script> -->
     <script type='text/javascript' src="services/kindOfSeatService.js"></script>
     <script type='text/javascript' src="services/notifyService.js"></script>
     <script type='text/javascript' src="services/filmService.js"></script>
+    <script type='text/javascript' src="services/ticketService.js"></script>
+    <script type='text/javascript' src="services/constants/seatConstants.js"></script>
 
     <!--Angular controllers-->
     <script type='text/javascript' src="components/login/loginCtrl.js"></script>
-    <script type='text/javascript' src="components/home/homeCtrl.js"></script>
+    <!-- <script type='text/javascript' src="components/home/homeCtrl.js"></script> -->
     <script type='text/javascript' src="components/cinema/cinemaCtrl.js"></script>
     <script type='text/javascript' src="components/seat/seatCtrl.js"></script>
     <script type='text/javascript' src="components/film/filmCtrl.js"></script>

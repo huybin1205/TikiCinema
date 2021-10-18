@@ -16,6 +16,8 @@ var cinema = require('./routes/cinema.route');
 var movieTheater = require('./routes/movieTheater.route');
 var seat = require('./routes/seat.route');
 var kindOfSeat = require('./routes/kindOfSeat.route');
+var film = require('./routes/film.route');
+var ticket = require('./routes/ticket.route');
 
 var app = express();
 
@@ -43,6 +45,8 @@ app.use('/api/cinema', cinema);
 app.use('/api/movie-theater', movieTheater);
 app.use('/api/seat', seat);
 app.use('/api/kind-of-seat', kindOfSeat);
+app.use('/api/film', film);
+app.use('/api/ticket', ticket);
 // app.use('/api/shifts', shifts);
 
 // catch 404 and forward to error handler
