@@ -40,7 +40,7 @@ Cài đặt môi trường bằng cách
 ```sh
 cd TikiCinema/server
 npm i
-nodemon app
+nodemon bin/www
 ```
 Database sử dụng **Microsoft SQL Server**
 ```sh
