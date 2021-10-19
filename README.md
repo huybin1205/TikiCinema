@@ -1,5 +1,6 @@
 # Tiki Cinema
 ## Devloper: Trần Gia Huy
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ## Thực trạng
 > Bởi vì đại dịch COVID-19 đang lan rộng ra toàn cầu, chỗ ngồi trong rạp chiếu phim phải tuân thủ các quy tắc sau:
 - Mọi người trong cùng một nhóm có thể ngồi cạnh nhau mà không bị hạn chế
@@ -12,6 +13,13 @@
 - Đặt một hoặc một bộ các ghế (đi theo nhóm) ngẫu nhiên. Đầu vào sẽ là một số chỉ định số lượng chỗ ngồi là cần thiết (các ghế nên ở cùng nhau)
 - Dịch vụ phải cho phép đặt trước một bộ ghế  theo chỉ định, trong đó chỗ ngồi được chỉ định bởi một tọa độ (hàng, cột)
 - Đóng gói service thành image Docker
+
+## Thời gian làm
+23/10/2021 - 19/10/2021
+
+## Thời gian thực tế làm
+1 ngày
+
 
 ## Chức năng
 - Hiển thị danh sách Cinema
