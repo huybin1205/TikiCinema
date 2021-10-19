@@ -47,4 +47,10 @@ Database sử dụng **Microsoft SQL Server**
 cd TikiCinema
 execute TikiNow.sql
 ```
+
+## Tài khoản đăng nhập ADMIN
+```sh
+username: admin
+password: #$uper@dm1N!
+```
 **Xin cám ơn!**
