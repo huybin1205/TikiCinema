@@ -15,10 +15,10 @@
 - Đóng gói service thành image Docker
 
 ## Thời gian làm
-23/10/2021 - 19/10/2021
+- 23/10/2021 - 19/10/2021
 
 ## Thời gian thực tế làm
-1 ngày
+- 1 ngày
 
 
 ## Chức năng
